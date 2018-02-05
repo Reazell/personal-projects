@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+	<context-param>
+		<description>Location to store BPMN file</description>
+		<param-name>file-upload</param-name>
+		<param-value>
+		C:\Users\sprzybyszewski\Desktop\ver2\apache-tomcat-8.0.45\webapps\camunda\WEB-INF\classes\bpmn
+		</param-value>
+	</context-param>
+	
+	<servlet>
+		<servlet-name>UploadServlet</servlet-name>
+		<servlet-class>camunda.servlets.UploadServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>UploadServlet</servlet-name>
+		<url-pattern>/UploadServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DownloadServlet</servlet-name>
+		<servlet-class>camunda.servlets.DownloadServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>DownloadServlet</servlet-name>
+		<url-pattern>/DownloadServlet</url-pattern>
+	</servlet-mapping>
+
+</web-app>
