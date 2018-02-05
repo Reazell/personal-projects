@@ -1,0 +1,6 @@
+c:\users\olcia\documents\visual studio 2015\Projects\ProgramowaniePrzybyszewski\ProgramowaniePrzybyszewski\bin\Debug\ProgramowaniePrzybyszewski.exe.config
+c:\users\olcia\documents\visual studio 2015\Projects\ProgramowaniePrzybyszewski\ProgramowaniePrzybyszewski\bin\Debug\ProgramowaniePrzybyszewski.exe
+c:\users\olcia\documents\visual studio 2015\Projects\ProgramowaniePrzybyszewski\ProgramowaniePrzybyszewski\bin\Debug\ProgramowaniePrzybyszewski.pdb
+c:\users\olcia\documents\visual studio 2015\Projects\ProgramowaniePrzybyszewski\ProgramowaniePrzybyszewski\obj\Debug\ProgramowaniePrzybyszewski.csprojResolveAssemblyReference.cache
+c:\users\olcia\documents\visual studio 2015\Projects\ProgramowaniePrzybyszewski\ProgramowaniePrzybyszewski\obj\Debug\ProgramowaniePrzybyszewski.exe
+c:\users\olcia\documents\visual studio 2015\Projects\ProgramowaniePrzybyszewski\ProgramowaniePrzybyszewski\obj\Debug\ProgramowaniePrzybyszewski.pdb
