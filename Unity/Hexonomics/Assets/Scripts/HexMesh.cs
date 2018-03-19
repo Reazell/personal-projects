@@ -51,32 +51,28 @@ public class HexMesh : MonoBehaviour
     private void Triangulate(HexDirection direction, HexCell cells)
     {
         Vector3 center = cells.transform.localPosition;
-        for (int i = 0; i < 6; i++)
-        {
-            AddTriangle(
-                center,
-                center + HexMetrics.GetFirstSolidCorner(direction),
-                center + HexMetrics.GetSecondSolidCorner(direction)
-            );
+        Vector3 v1 = center + HexMetrics.GetFirstSolidCorner(direction);
+        Vector3 v2 = center + HexMetrics.GetSecondSolidCorner(direction);
+        AddTriangle(center, v1, v2);
+        AddTriangleColor(cells.color);
+
+        Vector3 v3 = center + HexMetrics.GetFirstCorner(direction);
+        Vector3 v4 = center + HexMetrics.GetSecondCorner(direction);
+
+        AddQuad(v1, v2, v3, v4);
+            
             HexCell previousNeighbour = cells.GetNeighbour(direction.Previous()) ?? cells;
             HexCell neighbour = cells.GetNeighbour(direction) ?? cells;
             HexCell nextNeighbour = cells.GetNeighbour(direction.Next()) ?? cells;
             Color edgeColor = (cells.color + neighbour.color) * 0.5f;
-            AddTriangleColor(
+            AddQuadColor(
+                cells.color,
                 cells.color,
                 (cells.color + previousNeighbour.color + neighbour.color) / 3f,
                 (cells.color + neighbour.color + nextNeighbour.color) /3f
                 );
-        }
+        
     }
-
-    void AddTriangleColor(Color c1, Color c2, Color c3)
-    {
-        colors.Add(c1);
-        colors.Add(c2);
-        colors.Add(c3);
-    }
-
     void AddTriangle(Vector3 v1, Vector3 v2, Vector3 v3)
     {
         int vertexIndex = vertices.Count;
@@ -86,5 +82,37 @@ public class HexMesh : MonoBehaviour
         triangles.Add(vertexIndex);
         triangles.Add(vertexIndex + 1);
         triangles.Add(vertexIndex + 2);
+    }
+
+    void AddTriangleColor(Color color)
+    {
+        colors.Add(color);
+        colors.Add(color);
+        colors.Add(color);
+    }
+
+
+
+    void AddQuad(Vector3 v1, Vector3 v2, Vector3 v3, Vector3 v4)
+    {
+        int vertexIndex = vertices.Count;
+        vertices.Add(v1);
+        vertices.Add(v2);
+        vertices.Add(v3);
+        vertices.Add(v4);
+        triangles.Add(vertexIndex);
+        triangles.Add(vertexIndex + 2);
+        triangles.Add(vertexIndex + 1);
+        triangles.Add(vertexIndex + 1);
+        triangles.Add(vertexIndex + 2);
+        triangles.Add(vertexIndex + 3);
+    }
+
+    void AddQuadColor(Color c1, Color c2, Color c3, Color c4)
+    {
+        colors.Add(c1);
+        colors.Add(c2);
+        colors.Add(c3);
+        colors.Add(c4);
     }
 }
