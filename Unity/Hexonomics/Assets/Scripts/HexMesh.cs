@@ -87,7 +87,15 @@ public class HexMesh : MonoBehaviour
             AddTriangleColor(cells.color, neighbour.color, nextNeighbour.color);
         }
 
-        TriangulateEdgeTerraces(v1,v2, cells, v3, v4, neighbour);
+        if (cells.GetEdgeType(direction) == HexEdgeType.Slope)
+        {
+            TriangulateEdgeTerraces(v1,v2, cells, v3, v4, neighbour);
+        }
+        else
+        {
+            AddQuad(v1,v2,v3,v4);
+            AddQuadColor(cells.color,neighbour.color);
+        }
        // AddQuad(v1, v2, v3, v4);
        // AddQuadColor(cells.color, neighbour.color);
     }
