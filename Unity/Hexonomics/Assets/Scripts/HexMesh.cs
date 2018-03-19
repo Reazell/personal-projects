@@ -64,14 +64,22 @@ public class HexMesh : MonoBehaviour
 
     private void TriangulateConnection(HexDirection direction, HexCell cells, Vector3 v1, Vector3 v2)
     {
+        Vector3 bridge = HexMetrics.GetBridge(direction);
+        Vector3 v3 = v1 + bridge;
+        Vector3 v4 = v2 + bridge;
         HexCell neighbour = cells.GetNeighbour(direction);
         if (neighbour == null)
         {
             return;
         }
-        Vector3 bridge = HexMetrics.GetBridge(direction);
-        Vector3 v3 = v1 + bridge;
-        Vector3 v4 = v2 + bridge;
+
+        HexCell nextNeighbour = cells.GetNeighbour(direction.Next());
+        if (direction<= HexDirection.E && nextNeighbour!= null)
+        {
+            AddTriangle(v2, v4, v2 + HexMetrics.GetBridge(direction.Next()));
+            AddTriangleColor(cells.color, neighbour.color, nextNeighbour.color);
+        }
+
 
         AddQuad(v1, v2, v3, v4);
         AddQuadColor(cells.color, neighbour.color);
