@@ -65,9 +65,20 @@ public class HexMesh : MonoBehaviour
         HexCell previousNeighbour = cells.GetNeighbour(direction.Previous()) ?? cells;
         HexCell neighbour = cells.GetNeighbour(direction) ?? cells;
         HexCell nextNeighbour = cells.GetNeighbour(direction.Next()) ?? cells;
-        Color edgeColor = (cells.color + neighbour.color) * 0.5f;
-        AddQuadColor(cells.color, (cells.color + neighbour.color) * 0.5f);
+        Color bridgeColor = (cells.color + neighbour.color) * 0.5f;
+        AddQuadColor(cells.color, bridgeColor);
 
+        AddTriangle(v1, center + HexMetrics.GetFirstCorner(direction), v3);
+        AddTriangleColor(
+            cells.color,
+            (cells.color + previousNeighbour.color + neighbour.color) / 3f,
+            bridgeColor);
+
+        AddTriangle(v2, v4, center + HexMetrics.GetSecondCorner(direction));
+        AddTriangleColor(
+            cells.color,
+            bridgeColor,
+            (cells.color + neighbour.color + nextNeighbour.color) /3f);
     }
     void AddTriangle(Vector3 v1, Vector3 v2, Vector3 v3)
     {
@@ -87,6 +98,12 @@ public class HexMesh : MonoBehaviour
         colors.Add(color);
     }
 
+    void AddTriangleColor(Color c1, Color c2, Color c3)
+    {
+        colors.Add(c1);
+        colors.Add(c2);
+        colors.Add(c3);
+    }
 
 
     void AddQuad(Vector3 v1, Vector3 v2, Vector3 v3, Vector3 v4)
