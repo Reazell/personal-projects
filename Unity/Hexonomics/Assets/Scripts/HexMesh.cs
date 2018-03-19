@@ -83,6 +83,26 @@ public class HexMesh : MonoBehaviour
         {
             Vector3 v5 = v2 + HexMetrics.GetBridge(direction.Next());
             v5.y = nextNeighbour.Elevation * HexMetrics.elevationStep;
+
+            if (cells.Elevation <= neighbour.Elevation)
+            {
+                if (cells.Elevation <= nextNeighbour.Elevation)
+                {
+                    TriangulateCorner(v2, cells, v4, neighbour, v5, nextNeighbour);
+                }
+                else
+                {
+                    TriangulateCorner(v5, nextNeighbour, v2, cells, v4, neighbour);
+                }
+            } else if (neighbour.Elevation <= nextNeighbour.Elevation)
+            {
+                TriangulateCorner(v4, neighbour, v5, nextNeighbour, v2, cells);
+            }
+            else
+            {
+                TriangulateCorner(v5, nextNeighbour, v2, cells, v4, neighbour);
+            }
+
             AddTriangle(v2, v4, v5);
             AddTriangleColor(cells.color, neighbour.color, nextNeighbour.color);
         }
@@ -125,6 +145,15 @@ public class HexMesh : MonoBehaviour
 
         AddQuad(v3,v4, endLeft, endRight);
         AddQuadColor(c2, endCell.color);
+    }
+
+    void TriangulateCorner(
+        Vector3 bottom, HexCell bottomCell,
+        Vector3 left, HexCell leftCell,
+        Vector3 right, HexCell rightCell)
+    {
+        AddTriangle(bottom, left, right);
+        AddTriangleColor(bottomCell.color, leftCell.color, rightCell.color);
     }
 
     void AddTriangle(Vector3 v1, Vector3 v2, Vector3 v3)
