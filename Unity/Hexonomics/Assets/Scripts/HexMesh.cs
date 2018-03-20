@@ -50,7 +50,7 @@ public class HexMesh : MonoBehaviour
 
     private void Triangulate(HexDirection direction, HexCell cells)
     {
-        Vector3 center = cells.transform.localPosition;
+        Vector3 center = cells.Position;
         Vector3 v1 = center + HexMetrics.GetFirstSolidCorner(direction);
         Vector3 v2 = center + HexMetrics.GetSecondSolidCorner(direction);
         AddTriangle(center, v1, v2);
@@ -75,14 +75,14 @@ public class HexMesh : MonoBehaviour
         Vector3 v4 = v2 + bridge;
 
         HexCell nextNeighbour = cells.GetNeighbour(direction.Next());
-        v3.y = v4.y = neighbour.Elevation * HexMetrics.elevationStep;
+        v3.y = v4.y = neighbour.Position.y;
 
 
         
         if (direction<= HexDirection.E && nextNeighbour!= null)
         {
             Vector3 v5 = v2 + HexMetrics.GetBridge(direction.Next());
-            v5.y = nextNeighbour.Elevation * HexMetrics.elevationStep;
+            v5.y = nextNeighbour.Position.y;
 
             if (cells.Elevation <= neighbour.Elevation)
             {
@@ -370,7 +370,7 @@ public class HexMesh : MonoBehaviour
     {
         Vector4 sample = HexMetrics.SampleNoise(position);
         position.x += (sample.x * 2f - 1f) * HexMetrics.cellPerturbStrength;
-     //   position.y += (sample.y * 2f - 1f) * HexMetrics.cellPerturbStrength;
+      //position.y += (sample.y * 2f - 1f) * HexMetrics.cellPerturbStrength;
         position.z += (sample.z * 2f - 1f) * HexMetrics.cellPerturbStrength;
         return position;
     }
