@@ -16,6 +16,8 @@ public class HexGrid : MonoBehaviour
     public Color defaultColor = Color.white;
     public Color touchedColor = Color.magenta;
 
+    public Texture2D noiseSource;
+
     HexCell[] cells;
     Canvas gridCanvas;
     HexMesh hexMesh;
@@ -25,11 +27,16 @@ public class HexGrid : MonoBehaviour
         hexMesh.Triangulate(cells);
     }
 
+    void OnEnable()
+    {
+        HexMetrics.noiseSource = noiseSource;
+    }
 
     void Awake()
     {
         gridCanvas = GetComponentInChildren<Canvas>();
         hexMesh = GetComponentInChildren<HexMesh>();
+        HexMetrics.noiseSource = noiseSource;
 
         cells = new HexCell[height * width];
 
