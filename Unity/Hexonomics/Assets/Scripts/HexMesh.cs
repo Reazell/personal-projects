@@ -66,11 +66,11 @@ public class HexMesh : MonoBehaviour
 
         if (direction <= HexDirection.SE)
         {
-            TriangulateConnection(direction, cells, v1, v2);
+            TriangulateConnection(direction, cells, v1, v2, e1, e2);
         }
     }
 
-    private void TriangulateConnection(HexDirection direction, HexCell cells, Vector3 v1, Vector3 v2)
+    private void TriangulateConnection(HexDirection direction, HexCell cells, Vector3 v1, Vector3 e1, Vector3 e2, Vector3 v2)
     {
         HexCell neighbour = cells.GetNeighbour(direction);
         if (neighbour == null)
@@ -84,6 +84,9 @@ public class HexMesh : MonoBehaviour
 
         HexCell nextNeighbour = cells.GetNeighbour(direction.Next());
         v3.y = v4.y = neighbour.Position.y;
+
+        Vector3 e3 = Vector3.Lerp(v3, v4, 1f / 3f);
+        Vector3 e4 = Vector3.Lerp(v3, v4, 2f / 3f);
 
 
         
@@ -121,8 +124,12 @@ public class HexMesh : MonoBehaviour
         }
         else
         {
-            AddQuad(v1,v2,v3,v4);
-            AddQuadColor(cells.color,neighbour.color);
+            AddQuad(v1, e1, v3, e3);
+            AddQuadColor(cells.color, neighbour.color);
+            AddQuad(e1,e2,e3,e4);
+            AddQuadColor(cells.color, neighbour.color);
+            AddQuad(e2, v2, e4, v4);
+            AddQuadColor(cells.color, neighbour.color);
         }
        // AddQuad(v1, v2, v3, v4);
        // AddQuadColor(cells.color, neighbour.color);
