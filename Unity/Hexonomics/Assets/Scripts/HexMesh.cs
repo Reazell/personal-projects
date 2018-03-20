@@ -152,8 +152,50 @@ public class HexMesh : MonoBehaviour
         Vector3 left, HexCell leftCell,
         Vector3 right, HexCell rightCell)
     {
+        HexEdgeType leftEdgeType = bottomCell.GetEdgeType(leftCell);
+        HexEdgeType rightEdgeType = bottomCell.GetEdgeType(rightCell);
+
+        Vector3 v3 = HexMetrics.TerraceLerp(bottom, left, 1);
+        Vector3 v4 = HexMetrics.TerraceLerp(bottom, right, 1);
+        Color c3 = HexMetrics.TerraceLerp(bottomCell.color, leftCell.color, 1);
+        Color c4 = HexMetrics.TerraceLerp(bottomCell.color, rightCell.color, 1);
+
+        AddTriangle(bottom, v3, v4);
+        AddTriangleColor(bottomCell.color, c3, c4);
+
+        for (int i = 2; i < HexMetrics.terraceSteps; i++)
+        {
+            Vector3 v1 = v3;
+            Vector3 v2 = v4;
+            Color c1 = c3;
+            Color c2 = c4;
+            v3 = HexMetrics.TerraceLerp(bottom, left, i);
+            v4 = HexMetrics.TerraceLerp(bottom, right, i);
+            c3 = HexMetrics.TerraceLerp(bottomCell.color, leftCell.color, i);
+            c4 = HexMetrics.TerraceLerp(bottomCell.color, rightCell.color, i);
+            AddQuad(v1, v2, v3, v4);
+            AddQuadColor(c1,c2,c3,c4);
+        }
+
+        AddQuad(v3, v4, left, right);
+        AddQuadColor(c3, c4, leftCell.color, rightCell.color);
+
+        if (leftEdgeType == HexEdgeType.Slope)
+        {
+            if (rightEdgeType == HexEdgeType.Slope)
+            {
+                TriangulateCornerTerraces(
+                    bottom, bottomCell, left, leftCell, right, rightCell);
+            }
+        }
+
         AddTriangle(bottom, left, right);
         AddTriangleColor(bottomCell.color, leftCell.color, rightCell.color);
+    }
+
+    private void TriangulateCornerTerraces(Vector3 bottom, HexCell bottomCell, Vector3 left, HexCell leftCell, Vector3 right, HexCell rightCell)
+    {
+            
     }
 
     void AddTriangle(Vector3 v1, Vector3 v2, Vector3 v3)
@@ -203,5 +245,13 @@ public class HexMesh : MonoBehaviour
         colors.Add(c1);
         colors.Add(c2);
         colors.Add(c2);
+    }
+
+    void AddQuadColor(Color c1, Color c2, Color c3, Color c4)
+    {
+        colors.Add(c1);
+        colors.Add(c2);
+        colors.Add(c3);
+        colors.Add(c4);
     }
 }
