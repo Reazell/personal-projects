@@ -58,50 +58,50 @@ public class HexMesh : MonoBehaviour {
 	void TriangulateConnection (
 		HexDirection direction, HexCell cell, EdgeVertices e1
 	) {
-		HexCell neighbour = cell.GetNeighbour(direction);
-		if (neighbour == null) {
+		HexCell neighbor = cell.GetNeighbor(direction);
+		if (neighbor == null) {
 			return;
 		}
 
 		Vector3 bridge = HexMetrics.GetBridge(direction);
-		bridge.y = neighbour.Position.y - cell.Position.y;
+		bridge.y = neighbor.Position.y - cell.Position.y;
 		EdgeVertices e2 = new EdgeVertices(
 			e1.v1 + bridge,
 			e1.v4 + bridge
 		);
 
 		if (cell.GetEdgeType(direction) == HexEdgeType.Slope) {
-			TriangulateEdgeTerraces(e1, cell, e2, neighbour);
+			TriangulateEdgeTerraces(e1, cell, e2, neighbor);
 		}
 		else {
-			TriangulateEdgeStrip(e1, cell.color, e2, neighbour.color);
+			TriangulateEdgeStrip(e1, cell.color, e2, neighbor.color);
 		}
 
-		HexCell nextNeighbour = cell.GetNeighbour(direction.Next());
-		if (direction <= HexDirection.E && nextNeighbour != null) {
+		HexCell nextNeighbor = cell.GetNeighbor(direction.Next());
+		if (direction <= HexDirection.E && nextNeighbor != null) {
 			Vector3 v5 = e1.v4 + HexMetrics.GetBridge(direction.Next());
-			v5.y = nextNeighbour.Position.y;
+			v5.y = nextNeighbor.Position.y;
 
-			if (cell.Elevation <= neighbour.Elevation) {
-				if (cell.Elevation <= nextNeighbour.Elevation) {
+			if (cell.Elevation <= neighbor.Elevation) {
+				if (cell.Elevation <= nextNeighbor.Elevation) {
 					TriangulateCorner(
-						e1.v4, cell, e2.v4, neighbour, v5, nextNeighbour
+						e1.v4, cell, e2.v4, neighbor, v5, nextNeighbor
 					);
 				}
 				else {
 					TriangulateCorner(
-						v5, nextNeighbour, e1.v4, cell, e2.v4, neighbour
+						v5, nextNeighbor, e1.v4, cell, e2.v4, neighbor
 					);
 				}
 			}
-			else if (neighbour.Elevation <= nextNeighbour.Elevation) {
+			else if (neighbor.Elevation <= nextNeighbor.Elevation) {
 				TriangulateCorner(
-					e2.v4, neighbour, v5, nextNeighbour, e1.v4, cell
+					e2.v4, neighbor, v5, nextNeighbor, e1.v4, cell
 				);
 			}
 			else {
 				TriangulateCorner(
-					v5, nextNeighbour, e1.v4, cell, e2.v4, neighbour
+					v5, nextNeighbor, e1.v4, cell, e2.v4, neighbor
 				);
 			}
 		}

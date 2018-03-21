@@ -4,10 +4,12 @@ using UnityEngine.EventSystems;
 public class HexMapEditor : MonoBehaviour {
 
 	public Color[] colors;
+
 	public HexGrid hexGrid;
+
 	int activeElevation;
 
-    Color activeColor;
+	Color activeColor;
 
 	public void SelectColor (int index) {
 		activeColor = colors[index];
