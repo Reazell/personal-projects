@@ -17,11 +17,14 @@ public class HexCell : MonoBehaviour
             elevation = value;
             Vector3 position = transform.localPosition;
             position.y = value * HexMetrics.elevationStep;
+<<<<<<< HEAD
             position.y += (HexMetrics.SampleNoise(position).y * 2f - 1f) * HexMetrics.elevationPerturbStrength;
+=======
+>>>>>>> parent of e188906... Perturbed cell elevation FIX
             transform.localPosition = position;
 
             Vector3 uiPosition = uiRect.localPosition;
-            uiPosition.z = -position.y;
+            uiPosition.z = elevation * -HexMetrics.elevationStep;
             uiRect.localPosition = uiPosition;
         }
     }
