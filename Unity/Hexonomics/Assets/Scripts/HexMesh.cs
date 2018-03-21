@@ -54,7 +54,7 @@ public class HexMesh : MonoBehaviour
         Vector3 v1 = center + HexMetrics.GetFirstSolidCorner(direction);
         Vector3 v2 = center + HexMetrics.GetSecondSolidCorner(direction);
 
-        Vector3 e1 = Vector3.Lerp(v1, v2, 1f/3f);
+        Vector3 e1 = Vector3.Lerp(v1, v2, 1f/ 3f);
         Vector3 e2 = Vector3.Lerp(v1, v2, 2f / 3f);
 
         AddTriangle(center, v1, e1);
@@ -87,6 +87,7 @@ public class HexMesh : MonoBehaviour
 
         Vector3 e3 = Vector3.Lerp(v3, v4, 1f / 3f);
         Vector3 e4 = Vector3.Lerp(v3, v4, 2f / 3f);
+
 
 
         
