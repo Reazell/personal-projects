@@ -3,9 +3,7 @@
 public class HexCell : MonoBehaviour {
 
 	public HexCoordinates coordinates;
-
 	public Color color;
-
 	public RectTransform uiRect;
 
 	public int Elevation {
@@ -35,8 +33,7 @@ public class HexCell : MonoBehaviour {
 
 	int elevation;
 
-	[SerializeField]
-	HexCell[] neighbors;
+	[SerializeField] HexCell[] neighbors;
 
 	public HexCell GetNeighbor (HexDirection direction) {
 		return neighbors[(int)direction];

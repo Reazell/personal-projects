@@ -4,9 +4,7 @@ using UnityEngine.EventSystems;
 public class HexMapEditor : MonoBehaviour {
 
 	public Color[] colors;
-
 	public HexGrid hexGrid;
-
 	int activeElevation;
 
 	Color activeColor;
