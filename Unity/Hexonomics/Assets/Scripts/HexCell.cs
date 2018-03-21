@@ -27,6 +27,11 @@ public class HexCell : MonoBehaviour
         }
     }
 
+    public Vector3 Position
+    {
+        get { return transform.localPosition; }
+    }
+
     int elevation;
 
     [SerializeField] HexCell[] neighbours;
@@ -52,4 +57,6 @@ public class HexCell : MonoBehaviour
     {
         return HexMetrics.GetEdgeType(elevation, otherCell.elevation);
     }
+
+    
 }
