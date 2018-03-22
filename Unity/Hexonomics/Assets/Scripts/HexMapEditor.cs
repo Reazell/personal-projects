@@ -8,8 +8,14 @@ public class HexMapEditor : MonoBehaviour {
 	int activeElevation;
 	Color activeColor;
 
+    private bool applyColor;
+    private bool applyElevation;
+
 	public void SelectColor (int index) {
-		activeColor = colors[index];
+	    applyColor = index >= 0;
+	    if (applyColor) {
+	        activeColor = colors[index];
+	    }
 	}
 
 	public void SetElevation (float elevation) {
@@ -38,7 +44,16 @@ public class HexMapEditor : MonoBehaviour {
 	}
 
 	void EditCell (HexCell cell) {
-		cell.Color = activeColor;
-		cell.Elevation = activeElevation;
+	    if (applyColor) {
+	        cell.Color = activeColor;
+	    }
+
+	    if (applyElevation) {
+	        cell.Elevation = activeElevation;
+	    }
 	}
+
+    public void SetApplyElevation(bool toggle) {
+        applyElevation = toggle;
+    }
 }

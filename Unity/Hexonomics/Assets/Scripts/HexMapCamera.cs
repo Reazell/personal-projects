@@ -7,10 +7,12 @@ public class HexMapCamera : MonoBehaviour {
     private Transform swivel, stick;
 
     private float zoom = 1f;
+    private float rotationAngle;
 
     public float moveSpeedMinZoom, moveSpeedMaxZoom;
     public float stickMinZoom, stickMaxZoom;
     public float swivelMiniZoom, swivelMaxZoom;
+    public float rotationSpeed;
 
     public HexGrid grid;
 
@@ -26,6 +28,10 @@ public class HexMapCamera : MonoBehaviour {
             AdjustZoom(zoomDelta);
         }
 
+        float rotationDelta = Input.GetAxis("Rotation");
+        if (rotationDelta != 0f) {
+            AdjustRotation(rotationDelta);
+        }
         float xDelta = Input.GetAxis("Horizontal");
         float zDelta = Input.GetAxis("Vertical");
         if (xDelta != 0f || zDelta != 0f) {
@@ -33,8 +39,18 @@ public class HexMapCamera : MonoBehaviour {
         }
     }
 
+    private void AdjustRotation(float delta) {
+        rotationAngle += delta * rotationSpeed * Time.deltaTime;
+        if (rotationAngle < 0f) {
+            rotationAngle += 360f;
+        } else if (rotationAngle >= 360f) {
+            rotationAngle -= 360f;
+        }
+        transform.localRotation = Quaternion.Euler(0f, rotationAngle, 0f);
+    }
+
     private void AdjustPosition(float xDelta, float zDelta) {
-        Vector3 direction = new Vector3(xDelta, 0f, zDelta).normalized;
+        Vector3 direction = transform.localRotation * new Vector3(xDelta, 0f, zDelta).normalized;
         float damping = Mathf.Max(Mathf.Abs(xDelta), Mathf.Abs(zDelta));
         float distance = Mathf.Lerp(moveSpeedMinZoom, moveSpeedMaxZoom, zoom) * damping * Time.deltaTime;
 
