@@ -23,26 +23,33 @@ public class HexCell : MonoBehaviour {
 		get {
 			return elevation;
 		}
-		set {
-			if (elevation == value) {
-				return;
-			}
-			elevation = value;
-			Vector3 position = transform.localPosition;
-			position.y = value * HexMetrics.elevationStep;
-			position.y +=
-				(HexMetrics.SampleNoise(position).y * 2f - 1f) *
-				HexMetrics.elevationPerturbStrength;
-			transform.localPosition = position;
+		set
+        {
+            if (elevation == value)
+            {
+                return;
+            }
+            ElevationDiversity(value);
+            Refresh();
+        }
+    }
 
-			Vector3 uiPosition = uiRect.localPosition;
-			uiPosition.z = -position.y;
-			uiRect.localPosition = uiPosition;
-			Refresh();
-		}
-	}
+    private void ElevationDiversity(int value)
+    {
+        elevation = value;
+        Vector3 position = transform.localPosition;
+        position.y = value * HexMetrics.elevationStep;
+        position.y +=
+            (HexMetrics.SampleNoise(position).y * 2f - 1f) *
+            HexMetrics.elevationPerturbStrength;
+        transform.localPosition = position;
 
-	public Vector3 Position {
+        Vector3 uiPosition = uiRect.localPosition;
+        uiPosition.z = -position.y;
+        uiRect.localPosition = uiPosition;
+    }
+
+    public Vector3 Position {
 		get {
 			return transform.localPosition;
 		}
