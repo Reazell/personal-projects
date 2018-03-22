@@ -1,23 +1,33 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class HexGridChunk : MonoBehaviour
-{
-    private HexCell[] cells;
-    private Canvas gridCanvas;
-    private HexMesh hexMesh;
+public class HexGridChunk : MonoBehaviour {
 
-    void Awake()
-    {
-        gridCanvas = GetComponentInChildren<Canvas>();
-        hexMesh = GetComponentInChildren<HexMesh>();
+	HexCell[] cells;
 
-        cells = new HexCell[HexMetrics.chunkSizeX * HexMetrics.chunkSizeZ];
+	HexMesh hexMesh;
+	Canvas gridCanvas;
 
-    }
+	void Awake () {
+		gridCanvas = GetComponentInChildren<Canvas>();
+		hexMesh = GetComponentInChildren<HexMesh>();
 
-    void Start()
-    {
-        hexMesh.Triangulate(cells);
-    }
+		cells = new HexCell[HexMetrics.chunkSizeX * HexMetrics.chunkSizeZ];
+	}
+
+	public void AddCell (int index, HexCell cell) {
+		cells[index] = cell;
+		cell.chunk = this;
+		cell.transform.SetParent(transform, false);
+		cell.uiRect.SetParent(gridCanvas.transform, false);
+	}
+
+	public void Refresh () {
+		enabled = true;
+	}
+
+	void LateUpdate () {
+		hexMesh.Triangulate(cells);
+		enabled = false;
+	}
 }
