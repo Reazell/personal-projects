@@ -12,6 +12,15 @@
   <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="/css/jquery-ui.css">
+  <link rel="stylesheet" href="/js/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+  </script>
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -50,7 +59,7 @@
             </div>
             <div class="banner-text text-center">
               <h1 class="white">Polska przychodnia w Irlandii</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod <br>tempor incididunt ut labore et dolore magna aliqua.</p>
+              <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod <br>tempor incididunt ut labore et dolore magna aliqua.</p> -->
               <a href="#contact" class="btn btn-appoint">Umów się już dziś.</a>
             </div>
             <div class="overlay-detail text-center">
@@ -66,10 +75,10 @@
   <section id="service" class="section-padding">
     <div class="container">
       <div class="row">
-        <div class="col-md-4 col-sm-4">
+      <div class="col-md-4 col-sm-4">
           <h2 class="ser-title">Nasze usługi</h2>
           <hr class="botm-line">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris cillum.</p>
+          <!--<p>Przychodnia Influmed oferuje szeroki zakres usług u naszych specjalistów: Lekarz rodzinny, ginekolog, endokrynolog, psychoterapeuta, dentysta oraz masażysta.</p> -->
         </div>
         <div class="col-md-4 col-sm-4">
           <div class="service-info">
@@ -78,7 +87,8 @@
             </div>
             <div class="icon-info">
               <h4>Badania</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <p> Nasza oferta obejmuje badania: krwi, moczu, cytologię, wymazy bakteryjne oraz testy alergologiczne. Wszystkie badania wykonujemy w atrakcyjnych pakietach.</p>
+              
             </div>
           </div>
           <div class="service-info">
@@ -87,7 +97,7 @@
             </div>
             <div class="icon-info">
               <h4>Opieka</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <p>W naszej przychodni prowadzimy ciąże, wykonujemy darmową cytologię w ramach progrmu <b>Cervical Check</b> oraz wykonujemy badania w kierunku nowotworów.</p>
             </div>
           </div>
         </div>
@@ -98,7 +108,7 @@
             </div>
             <div class="icon-info">
               <h4>Konsultacje</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <p>Oferujemy szeroki zakres usług u naszych specjalistów: Lekarz rodzinny, ginekolog, endokrynolog, psychoterapeuta, dentysta oraz masażysta.</p>
             </div>
           </div>
           <div class="service-info">
@@ -106,8 +116,8 @@
               <i class="fa fa-medkit"></i>
             </div>
             <div class="icon-info">
-              <h4>I wiele innych</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <h4>I wiele innych...</h4>
+              <p></p>
             </div>
           </div>
         </div>
@@ -124,39 +134,184 @@
             <div class="mt-boxy-color"></div>
             <div class="medi-info">
               <h3>Lista naszych usług</h3>
-              <p>I am text block. Edit this text from Appearance / Customize / Homepage header columns. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+              <p>Zapraszamy do zapoznania się z ofertą usług w naszych placówkach. </p>
+              <br>
 
               <button id="myBtn" class="button">Cennik</button>
                 <div id="myModal" class="modal">
                   <div class="modal-content">
                     <span class="close">&times;</span>
                     <p>Cennik</p>
-                      <table>
-                        <thead>
-                          <tr>
-                            <th scope="col">Usługa</th>
-                            <th scope="col">Cena</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td data-label="Account">Badanie XYZ</td>
-                            <td data-label="Due Date">100&euro;</td>
-                          </tr>
-                          <tr>
-                            <td scope="row" data-label="Account">Badanie XYZ</td>
-                            <td data-label="Due Date">100&euro;</td>
-                          </tr>
-                          <tr>
-                            <td scope="row" data-label="Account">Badanie XYZ</td>
-                            <td data-label="Due Date">100&euro;</td>
-                          </tr>
-                          <tr>
-                            <td scope="row" data-label="Acount">Badanie XYZ</td>
-                            <td data-label="Due Date">100&euro;</td>
-                          </tr>
-                        </tbody>
-                      </table>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th scope="col">Usługa</th>
+                          <th scope="col">Cena</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td colspan="2" data-label="Account"><b>Lekarz rodzinny</b></td>
+                        </tr>
+                        <tr>
+                          <td scope="row" data-label="Account">Wizyta</td>
+                          <td data-label="Due Date">&euro;50</td>
+                        </tr>
+                        <tr>
+                          <td scope="row" data-label="Account">Wizyta pediatryczna</td>
+                          <td data-label="Due Date">&euro;60</td>
+                        </tr>
+                        <tr>
+                          <td scope="row" data-label="Acount">Wizyta kontrolna</td>
+                          <td data-label="Due Date">&euro;40</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Badanie na prawo jazdy</td>
+                            <td data-label="Due Date">&euro;45</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">EKG z wizytą</td>
+                            <td data-label="Due Date">&euro;100</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Usuwanie szwów</td>
+                            <td data-label="Due Date">&euro;30</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Iniekcje</td>
+                            <td data-label="Due Date">&euro;15</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Wizyta endokrynologiczna</td>
+                            <td data-label="Due Date">&euro;70</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Wizyta z USG (endokrynologiczna)</td>
+                            <td data-label="Due Date">&euro;120</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Zaświadczenia, recepty</td>
+                            <td data-label="Due Date">&euro;30</td>
+                        </tr>
+
+
+                        <tr>
+                            <td colspan="2" data-label="Account"><b>Ginekolog</b></td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Wizyta</td>
+                            <td data-label="Due Date">&euro;70</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Wizyta kontrolna</td>
+                            <td data-label="Due Date">&euro;50</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Wizyta kontrolna z USG</td>
+                            <td data-label="Due Date">&euro;100</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Wizyta z USG</td>
+                            <td data-label="Due Date">&euro;120</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">USG z nagraniem (<b>tylko Dublin</b>)</td>
+                            <td data-label="Due Date">&euro;100</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">USG 3D / 4D (<b>tylko Dublin</b>)</td>
+                            <td data-label="Due Date">&euro;200</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">USG Genetyczne ???</td>
+                            <td data-label="Due Date">&euro; ???</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Wymaz</td>
+                            <td data-label="Due Date">&euro;50</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Wymaz do Polski</td>
+                            <td data-label="Due Date">&euro;80</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Cytologia</td>
+                            <td data-label="Due Date">&euro;50</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Test na raka szyjki macicy</td>
+                            <td data-label="Due Date">&euro;200</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Test na chlamydię</td>
+                            <td data-label="Due Date">&euro;50</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Test HPV, HVS</td>
+                            <td data-label="Due Date">&euro;150</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Leczenie nadżerki(<b>tylko Dublin</b>)</td>
+                            <td data-label="Due Date">&euro;200</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Kontrola USG owulacji</td>
+                            <td data-label="Due Date">&euro;150</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">USG piersi z konsultacją</td>
+                            <td data-label="Due Date">&euro;150</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Test poskoitalny (<b>tylko Dublin</b>)</td>
+                            <td data-label="Due Date">&euro;100</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Drożność jajowodów (<b>tylko Dublin</b>)</td>
+                            <td data-label="Due Date">&euro;250</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Biopsja</td>
+                            <td data-label="Due Date">&euro;250</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Test zmian piersi (<b>tylko Dublin</b>)</td>
+                            <td data-label="Due Date">&euro;200</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Kolposkopia</td>
+                            <td data-label="Due Date">&euro;250</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Diagnostyka histologiczna zmian nowotworowych</td>
+                            <td data-label="Due Date">&euro;220</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Usunięcie wkładki</td>
+                            <td data-label="Due Date">&euro;150</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Założenie wkładki (z własna wkładką)</td>
+                            <td data-label="Due Date">&euro;150</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Założenie wkładki (z naszą wkładką)</td>
+                            <td data-label="Due Date">&euro;200</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2" data-label="Account"><b>Inne</b></td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Masaż</td>
+                            <td data-label="Due Date">&euro;40/60 minut</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Acount">Psychoterapeuta</td>
+                            <td data-label="Due Date">&euro;60</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
             </div>
@@ -164,8 +319,12 @@
           <div class="col-md-4 col-sm-4">
             <div class="medi-info">
               <h3>O przychodni</h3>
-              <p>I am text block. Edit this text from Appearance / Customize / Homepage header columns. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-              <a href="#" class="medi-info-btn">READ MORE</a>
+              <p>Jesteśmy Polską przychodnią działającą na terenie Irlandii, w Dublinie oraz Galway.</p>
+              <br>
+              <br>
+              <br>
+              
+              <!--<a href="#" class="medi-info-btn">READ MORE</a>-->
             </div>
           </div>
           <div class="col-md-4 col-sm-4 mt-boxy-3">
@@ -184,7 +343,7 @@
                   </tr>
                   <tr>
                     <td>Niedziela</td>
-                    <td>Nieczynna</td>
+                    <td>9.00 - 16.00</td>
                   </tr>
                 </tbody>
               </table>
@@ -203,8 +362,8 @@
           <div class="section-title">
             <h2 class="head-title lg-line">Nasze <br>placówki</h2>
             <hr class="botm-line">
-            <p class="sec-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..</p>
-            <a href="" style="color: #0cb8b6; padding-top:10px;">Dowiedz się więcej...</a>
+            <p class="sec-para">Nasze przychodnie znajdują się w dogodnych miejscach, blisko centrum miasta z dobrym dojazdem.</p>
+            <!--<a href="" style="color: #0cb8b6; padding-top:10px;">Dowiedz się więcej...</a>-->
           </div>
         </div>
         <div class="col-md-9 col-sm-8 col-xs-12">
@@ -213,14 +372,14 @@
               <div class="more-features-box-text-icon"> <i class="fa fa-angle-right" aria-hidden="true"></i> </div>
               <div class="more-features-box-text-description">
                 <h3>Dublin</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. Ut wisi enim ad minim veniam, quis nostrud.</p>
+                <p>Placówka w Dublinie znajduje się niecałe 500 metrów od słynnej <b>Spire of Dublin</b>, oraz 100 metrów od przystanku komunikacji miejskiej.</p>
               </div>
             </div>
             <div class="more-features-box-text">
               <div class="more-features-box-text-icon"> <i class="fa fa-angle-right" aria-hidden="true"></i> </div>
               <div class="more-features-box-text-description">
                 <h3>Galway</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. Ut wisi enim ad minim veniam, quis nostrud.</p>
+                <p>Usytuowana niedaleko rzeki <b>Corrib</b>, 4 minuty pieszo od najbliższego przystanku autobusowego i niecałe 800 metrów od centrum miasta.</p>
               </div>
             </div>
           </div>
@@ -239,58 +398,46 @@
         </div>
         <div class="col-md-3 col-sm-3 col-xs-6">
           <div class="thumbnail">
-            <img src="img/doctor1.jpg" alt="..." class="team-img">
+
             <div class="caption">
-              <h3>Abwabwa</h3>
+              <h3>Lek. med. Wojciech Peszek</h3>
               <p>Ginekolog</p>
-              <ul class="list-inline">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-              </ul>
             </div>
           </div>
         </div>
         <div class="col-md-3 col-sm-3 col-xs-6">
           <div class="thumbnail">
-            <img src="img/doctor1.jpg" alt="..." class="team-img">
             <div class="caption">
-              <h3>Abwa Bwa</h3>
-              <p>GP</p>
-              <ul class="list-inline">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-              </ul>
+              <h3>Dr Beata Niedźwiedzka</h3>
+              <p>Ginekolog</p>
+
             </div>
           </div>
         </div>
         <div class="col-md-3 col-sm-3 col-xs-6">
           <div class="thumbnail">
-            <img src="img/doctor1.jpg" alt="..." class="team-img">
             <div class="caption">
-              <h3>Bwaa Bwaaa</h3>
-              <p>Ortopeda</p>
-              <ul class="list-inline">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-              </ul>
+              <h3>Dr Alberto Embalo</h3><br>
+              <p>Lekarz rodzinny</p>
+
             </div>
           </div>
         </div>
         <div class="col-md-3 col-sm-3 col-xs-6">
           <div class="thumbnail">
-            <img src="img/doctor1.jpg" alt="..." class="team-img">
             <div class="caption">
-              <h3>Bwabwabaw </h3>
+              <h3>Dr Maria Dziwisz</h3><br> 
               <p>Edokrynolog</p>
-              <ul class="list-inline">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-              </ul>
             </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6">
+        <div class="thumbnail">
+          <div class="caption">
+            <h3>Dr Krzysztof Kiełkiewicz</h3><br> 
+            <p>Psychoterapeuta</p>
           </div>
         </div>
       </div>
@@ -432,7 +579,7 @@
               <h4 class="white no-padding">Influmed - Polska przychodnia</h4>
             </div>
             <div class="info-sec">
-              <p>Praesent convallis tortor et enim laoreet, vel consectetur purus latoque penatibus et dis parturient.</p>
+              <p></p>
             </div>
           </div>
           <div class="col-md-4 col-sm-4 marb20">
