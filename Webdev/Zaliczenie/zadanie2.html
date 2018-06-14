@@ -20,11 +20,16 @@
                     var node="H"+tmp;
                     var textnode=document.createTextNode(element)
                     var nag=document.createElement(node);
-                    nag.style.cssText=("color:rgb("+index*42+","+index*54+","+index*97+")")
+                    nag.style.cssText=("color:rgb("+randomNumber().toString()+","+randomNumber().toString()+","+randomNumber().toString()+")")
                     nag.appendChild(textnode);
                     document.getElementById("teksty").appendChild(nag)
                 }
             })
+
+            function randomNumber() {
+             return Math.floor(Math.random() * (256 - 1 + 1)) + 1
+            };
+
             </script>
 </body>
 </html>
