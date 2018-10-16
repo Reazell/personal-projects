@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    
+</head>
+<body>
+    <textarea name="note" id="note" cols="30" rows="10"></textarea>
+    <button id="wyslij">Wyslij</button>
+    <h1>Notatka:</h1>
+    <div id="pole"></div>
+
+        <script>
+                $(function(){
+                    $("#wyslij").click(function(){
+                        localStorage.clear();
+                        localStorage.setItem("notatka",$("#note").val());
+                        $("#pole").text($("#note").val());
+                    })
+                    for(let i=0, len=localStorage.length; i<len; i++) {
+                        let key = localStorage.key(i);
+                        let value = localStorage[key];
+                        $("#pole").text(value);
+                    }
+                })
+                </script>
+</body>
+</html>
